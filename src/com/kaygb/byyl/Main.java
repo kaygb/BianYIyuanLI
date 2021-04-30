@@ -9,11 +9,25 @@ public class Main {
     private static boolean breakLen(int i, int len) { // 判断数组是否越界
         return i < len;
     }
-
     private static String error() { // 错误
         return "error";
     }
-
+    private static void prtln(Object obj){
+        System.out.println(obj);
+    }
+    private static void prt(Object obj){
+        System.out.print(obj);
+    }
+    private static void ForBL(ArrayList<Object> arrayList,String msg){
+        for (Object i:arrayList){
+            prt(i + msg);
+        }
+    }
+    private static void ForBL(Object[] objects,String msg){
+        for (Object i:objects){
+            prt(i + msg);
+        }
+    }
     public static void main(String[] args) {
 
         String[] k = {"begin", "while", "for", "if", "else", "long", "case", "do", "main", "int"};
@@ -21,7 +35,6 @@ public class Main {
         Map<String, String> map = new HashMap<String,String>();
         ArrayList<String> ct = new ArrayList<>();
         ArrayList<String> it = new ArrayList<>();
-
         Scanner scanner = new Scanner(System.in);
         while (true){
             System.out.println("------------");
@@ -29,6 +42,7 @@ public class Main {
             for (String i:k){
                 System.out.print(i+ " ");
             }
+//            ForBL(k , " ");
             System.out.println("\n----------");
             System.out.print("P: ");
             for (String i:p){
@@ -56,9 +70,6 @@ public class Main {
             }
             String[] res = lexical(str,k,p);
             for (String re : res) {
-//                if (re != null) {
-//                    System.out.println(re);
-//                }
                 if (re==null){
                     break;
                 }
@@ -95,28 +106,10 @@ public class Main {
                 }
 
             }
-
-//            for (Map.Entry<String, String> entry : map.entrySet()) {
-//                if (entry.getValue() != "error"){
-//                    System.out.println(entry.getKey() + "\nthe word is: " + entry.getValue());
-//                }else{
-//                    System.out.println(entry.getKey() + "\n" + entry.getValue());
-//                }
-//
-//
-//            }
-
         }
-
-
-
     }
-
     private static String[] lexical(String str , String[] ktable ,String[] ptable){
-//        Scanner scanner = new Scanner(System.in);
-//        String str = scanner.nextLine();
         String newstr = str.replace(" ", "");
-//        System.out.println(newstr);
         String[] res = new String[100];
         int res_point = 0; // 初始化
         for (int i = 0; i < newstr.length(); i++) {
@@ -179,7 +172,6 @@ public class Main {
                     if (ca == '<') {
                         if (cas == '=') {
                             res[res_point] += "<=";
-                            System.out.println("<=123123d");
                         } else if (cas == '>') {
                             res[res_point] += "<>";
                         } else {
@@ -199,16 +191,11 @@ public class Main {
                                 res[res_point] = ptable[pt];
                             }
                         }
-
                     }
                 }
-
-//                continue;
             }
             res_point++;
-
         }
         return res;
     }
-
 }

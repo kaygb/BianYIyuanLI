@@ -56,9 +56,9 @@ public class Main {
             }
             String[] res = lexical(str,k,p);
             for (String re : res) {
-                if (re != null) {
-                    System.out.println(re);
-                }
+//                if (re != null) {
+//                    System.out.println(re);
+//                }
                 if (re==null){
                     break;
                 }
@@ -67,6 +67,7 @@ public class Main {
                 for (int pp = 0;pp <p.length;pp++){
                     if (p[pp].equals(re)){
                         map.put("(p,"+pp+")" ,p[pp]);
+                        System.out.println("(p,"+pp+")" + "\nthe word is: " + p[pp]);
                         flag=1;
                     }
                 }
@@ -74,35 +75,36 @@ public class Main {
                     for (int kk = 0;kk <k.length;kk++){
                         if (k[kk].equals(re)){
                             map.put("(k,"+kk+")" ,k[kk]);
+                            System.out.println("(k,"+kk+")" + "\nthe word is: " + k[kk]);
                         }
                     }
                 }
                 if(flag==0){
                     if (re.length()!=0 && re.charAt(0) >= '0' && re.charAt(0) <= '9' ){
-                        map.put("(c,"+c+")" ,re);
+                        map.put("(c,"+(it.size())+")" ,re);
+                        System.out.println("(c,"+ (ct.size())+")" + "\nthe word is: " + re);
                         ct.add(re);
-                        c++;
                     }
                 }
                 if(flag==0){
                     if (re.length()!=0 &&re.charAt(0) >= 'a' && re.charAt(0) <= 'z' ){
-                        map.put("(i,"+i+")" ,re);
+                        map.put("(i,"+(it.size())+")" ,re);
+                        System.out.println("(i," +(it.size()) +")" + "\nthe word is: " + re);
                         it.add(re);
-                        i++;
                     }
                 }
 
             }
 
-            for (Map.Entry<String, String> entry : map.entrySet()) {
-                if (entry.getValue() != "error"){
-                    System.out.println(entry.getKey() + "\nthe word is: " + entry.getValue());
-                }else{
-                    System.out.println(entry.getKey() + "\n" + entry.getValue());
-                }
-
-
-            }
+//            for (Map.Entry<String, String> entry : map.entrySet()) {
+//                if (entry.getValue() != "error"){
+//                    System.out.println(entry.getKey() + "\nthe word is: " + entry.getValue());
+//                }else{
+//                    System.out.println(entry.getKey() + "\n" + entry.getValue());
+//                }
+//
+//
+//            }
 
         }
 
